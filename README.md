@@ -19,5 +19,5 @@ python manage.py runserver
 > Update requirements.txt
 
 ```bash
-pip freeze > requirements.txt # Python3
+pip freeze > requirements.txt
 ```
