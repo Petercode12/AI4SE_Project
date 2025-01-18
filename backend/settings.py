@@ -37,9 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add django-cors-headers
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,3 +124,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS configuration
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins (for development only)
+
+# Alternatively, allow specific origins:
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Your frontend origin
+# ]
+
+# Optional: Add headers to preflight request if needed
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]

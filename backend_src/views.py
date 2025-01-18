@@ -69,7 +69,11 @@ def predict_co2(request):
         try:
             data = json.loads(request.body)
             preprocessed_data_df = preprocess_input(data)
-            prediction = decision_tree_model.predict(preprocessed_data_df.iloc[[0]])[0]
+            
+            if data["ml_model"] == 0:
+                prediction = linear_reg_model.predict(preprocessed_data_df.iloc[[0]])[0]
+            else:
+                prediction = decision_tree_model.predict(preprocessed_data_df.iloc[[0]])[0]
         
             return JsonResponse({ 'prediction': prediction }, status=200)
         except Exception as e:
